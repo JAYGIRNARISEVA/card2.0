@@ -1,0 +1,612 @@
+/* =========================================
+   JAY GIRNARI SEVA MANDAL
+   DONOR CARD GENERATOR
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --gold:#D4AF37;
+    --gold2:#FFE082;
+    --green:#198754;
+    --blue:#0d6efd;
+    --white:#ffffff;
+    --dark:#222222;
+
+}
+
+body{
+
+    font-family:'Noto Sans Gujarati',sans-serif;
+    background:#eef2f7;
+    overflow-x:hidden;
+
+}
+
+.container{
+
+    display:flex;
+    min-height:100vh;
+
+}
+
+/* =========================================
+   LEFT PANEL
+========================================= */
+
+.left-panel{
+
+    width:370px;
+    background:#ffffff;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+    z-index:20;
+
+}
+
+.logo{
+
+    width:110px;
+    display:block;
+    margin:auto;
+    user-select:none;
+    -webkit-user-drag:none;
+
+}
+
+.left-panel h1{
+
+    margin-top:15px;
+    text-align:center;
+    color:#166534;
+    font-size:28px;
+    font-weight:700;
+
+}
+
+.subtitle{
+
+    text-align:center;
+    color:#777;
+    margin:10px 0 30px;
+
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-group{
+
+    margin-bottom:18px;
+
+}
+
+.form-group label{
+
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#333;
+
+}
+
+input[type="text"],
+input[type="number"]{
+
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #dddddd;
+    font-size:16px;
+    outline:none;
+    transition:.25s;
+
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus{
+
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(212,175,55,.15);
+
+}
+
+/* =========================================
+   PHOTO UPLOAD
+========================================= */
+
+.upload-box{
+
+    border:2px dashed var(--gold);
+    border-radius:14px;
+    text-align:center;
+    padding:25px;
+    cursor:pointer;
+    transition:.25s;
+
+}
+
+.upload-box:hover{
+
+    background:#fffdf4;
+
+}
+
+.uploadLabel{
+
+    display:block;
+    cursor:pointer;
+    font-size:20px;
+    color:#444;
+
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button{
+
+    width:100%;
+    margin-top:15px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    color:#ffffff;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+
+}
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+button:disabled{
+
+    opacity:.75;
+    cursor:not-allowed;
+
+}
+
+#downloadBtn{
+
+    background:var(--blue);
+
+}
+
+#shareBtn{
+
+    background:#25D366;
+
+}
+
+/* =========================================
+   RIGHT PANEL
+========================================= */
+
+.right-panel{
+
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+
+}
+/* =========================================
+   DONOR CARD
+========================================= */
+
+#card{
+
+    width:420px;
+    height:650px;
+    position:relative;
+    overflow:hidden;
+    border-radius:22px;
+    background:#ffffff;
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+}
+
+.background{
+
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    user-select:none;
+    -webkit-user-drag:none;
+
+}
+
+.overlay{
+
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        rgba(0,0,0,.20),
+        rgba(0,0,0,.60)
+    );
+
+}
+
+.gold-border{
+
+    position:absolute;
+    inset:10px;
+    border:4px solid var(--gold);
+    border-radius:18px;
+    z-index:2;
+
+}
+
+.gold-border::after{
+
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1.5px solid var(--gold2);
+    border-radius:10px;
+
+}
+
+/* =========================================
+   NGO LOGO
+========================================= */
+
+.logo-circle{
+
+    position:absolute;
+    top:22px;
+    left:50%;
+    transform:translateX(-50%);
+    width:100px;
+    height:100px;
+    background:#ffffff;
+    border-radius:50%;
+    border:4px solid var(--gold);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    z-index:10;
+    box-shadow:0 5px 15px rgba(0,0,0,.20);
+
+}
+
+.card-logo{
+
+    width:72%;
+    height:72%;
+    object-fit:contain;
+    user-select:none;
+    -webkit-user-drag:none;
+
+}
+
+/* =========================================
+   NGO NAME
+========================================= */
+
+.ngo-name{
+
+    position:absolute;
+    top:132px;
+    width:100%;
+    text-align:center;
+    color:#ffffff;
+    font-size:28px;
+    font-weight:700;
+    z-index:10;
+    text-shadow:2px 2px 5px rgba(0,0,0,.4);
+
+}
+
+.ngo-city{
+
+    position:absolute;
+    top:168px;
+    width:100%;
+    text-align:center;
+    color:#FFE082;
+    font-size:18px;
+    z-index:10;
+
+}
+
+/* =========================================
+   DONOR PHOTO
+========================================= */
+
+.photo-ring{
+
+    position:absolute;
+    top:185px;
+    left:50%;
+    transform:translateX(-50%);
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    border:5px solid var(--gold);
+    overflow:hidden;
+    background:#ffffff;
+    z-index:10;
+    box-shadow:0 5px 15px rgba(0,0,0,.25);
+
+}
+
+.photo-ring img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    user-select:none;
+    -webkit-user-drag:none;
+
+}
+/* =========================================
+   DONOR DETAILS
+========================================= */
+
+.donor-label{
+
+    position:absolute;
+    top:350px;
+    width:100%;
+    text-align:center;
+    color:#ffffff;
+    font-size:18px;
+    z-index:10;
+
+}
+
+#previewName{
+
+    position:absolute;
+    top:365px;
+    width:100%;
+    padding:0 15px;
+    text-align:center;
+    color:#FFD700;
+    font-size:26px;
+    font-weight:bold;
+    word-break:break-word;
+    z-index:10;
+
+}
+
+.amount-title{
+
+    position:absolute;
+    top:405px;
+    width:100%;
+    text-align:center;
+    color:#ffffff;
+    font-size:16px;
+    z-index:10;
+
+}
+
+#previewAmount{
+
+    position:absolute;
+    top:430px;
+    width:100%;
+    padding:0 15px;
+    text-align:center;
+    color:#ffffff;
+    font-size:32px;
+    font-weight:bold;
+    word-break:break-word;
+    z-index:10;
+
+}
+
+#amountWords{
+
+    position:absolute;
+    top:475px;
+    width:100%;
+    padding:0 20px;
+    text-align:center;
+    color:#FFE082;
+    font-size:16px;
+    line-height:1.5;
+    word-break:break-word;
+    z-index:10;
+
+}
+
+.thanks{
+
+    position:absolute;
+    bottom:95px;
+    width:100%;
+    padding:0 20px;
+    text-align:center;
+    color:#ffffff;
+    font-size:15px;
+    line-height:1.6;
+    z-index:10;
+
+}
+
+#todayDate{
+
+    position:absolute;
+    bottom:55px;
+    width:100%;
+    text-align:center;
+    color:#FFD700;
+    font-size:16px;
+    font-weight:bold;
+    z-index:10;
+
+}
+
+.phones{
+
+    position:absolute;
+    bottom:15px;
+    width:100%;
+    text-align:center;
+    color:#ffffff;
+    font-size:14px;
+    line-height:1.4;
+    z-index:10;
+
+}
+
+/* =========================================
+   IMAGE SETTINGS
+========================================= */
+
+img{
+
+    user-select:none;
+    -webkit-user-drag:none;
+    pointer-events:none;
+
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width:900px){
+
+    .container{
+
+        flex-direction:column;
+
+    }
+
+    .left-panel{
+
+        width:100%;
+        box-shadow:none;
+
+    }
+
+    .right-panel{
+
+        padding:20px;
+
+    }
+
+    #card{
+
+        width:360px;
+        height:560px;
+
+    }
+
+    .logo-circle{
+
+        width:90px;
+        height:90px;
+
+    }
+
+    .ngo-name{
+
+        top:118px;
+        font-size:23px;
+
+    }
+
+    .ngo-city{
+
+        top:148px;
+        font-size:16px;
+
+    }
+
+    .photo-ring{
+
+        width:120px;
+        height:120px;
+        top:180px;
+
+    }
+
+    .donor-label{
+
+        top:315px;
+
+    }
+
+    #previewName{
+
+        top:338px;
+        font-size:22px;
+
+    }
+
+    .amount-title{
+
+        top:372px;
+
+    }
+
+    #previewAmount{
+
+        top:395px;
+        font-size:28px;
+
+    }
+
+    #amountWords{
+
+        top:432px;
+        font-size:14px;
+
+    }
+
+    .thanks{
+
+        bottom:62px;
+        font-size:13px;
+
+    }
+
+    #todayDate{
+
+        bottom:34px;
+        font-size:14px;
+
+    }
+
+    .phones{
+
+        bottom:8px;
+        font-size:12px;
+
+    }
+
+}
+
+/* =========================================
+   END
+========================================= */
